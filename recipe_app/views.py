@@ -1,4 +1,4 @@
 from django.shortcuts import render
 
 def welcome(request):
-    return render(request, 'layouts\app.html')
+    return render(request, 'pages/index.html')
