@@ -1,7 +1,24 @@
 {% extends 'layouts/app.html' %}
 
 {% block title %}Login{% endblock title %}
+{% block style %}
+{% load static %}
+<link rel='stylesheet'  type="text/css" href="{% static 'css/login.css' %}">
+{% endblock style %}
 
 {% block content %}
-<h1>Login Page</h1>
+
+{% if form.errors %}
+    <p>{{ form.errors }}</p>
+{% endif %}
+
+<form action='{% url "login" %}' method='POST'>
+  {% csrf_token %}
+  <label>Username:</label>
+  <input type='text' name='username'>
+  <label>Password:</label>
+  <input type='password' name='password'>
+  <input type='submit' value='Login'>
+</form>
+
 {% endblock content %}
