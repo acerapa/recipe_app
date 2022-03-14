@@ -37,6 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'account',
+    'recipe',
+    'procedure',
+    'bookmarks',
+    'comments',
+    'file',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +138,7 @@ LOGIN_REDIRECT_URL = '/'
 # Redirects after logout
 
 LOGOUT_REDIRECT_URL = '/'
+
+# Custom auth model
+
+AUTH_USER_MODEL = 'account.Account'
