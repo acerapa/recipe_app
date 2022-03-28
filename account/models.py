@@ -10,7 +10,7 @@ class Account(AbstractUser):
     
   username = None
   email = models.EmailField('email', unique=True)
-  file_id= models.ForeignKey(File, on_delete=models.CASCADE)
+  file = models.ForeignKey(File, on_delete=models.CASCADE, null=True)
   
   
   USERNAME_FIELD = 'email'
