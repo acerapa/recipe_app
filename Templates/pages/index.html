@@ -5,12 +5,7 @@ Welcome to DelishDish
 {% endblock title %}
 
 {% block content %}
-
-{% if request.user.is_authenticated %}
-<h1>Welcome {{ request.user.username }}</h1>
-{% else %}
-<h1>Welcome Guest</h1>
-<a href="{% url 'login' %}">login</a>
-{% endif %}
-
+<div class='wrapper'>
+  
+</div>
 {% endblock content %}
