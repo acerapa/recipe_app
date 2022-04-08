@@ -10,10 +10,12 @@
   {% block style %}{% endblock style %}
 </head>
 <body>
-  <header>
-    {% include 'components/header.html' %}
-  </header>
-  {% block content %}{% endblock content %}
+  <div id='main'>
+    <header>
+      {% include 'components/header.html' %}
+    </header>
+    {% block content %}{% endblock content %}
+  </div>
   {% block scripts %}{% endblock scripts %}
 </body>
 </html>

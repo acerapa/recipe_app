@@ -8,7 +8,17 @@ body {
 header {
   width: 100%;
   height: 70px;
-  background-color: #92beeb;
+  background-color: #0000000d; /* when scroll header change color to #92beeb */
+  position: fixed;
+}
+
+header img {
+  border: solid 1px #92beeb;
+  background-color: white;
+  padding: 5px;
+  width: 69px !important;
+  height: 55px !important;
+  border-radius: 59px;
 }
 
 #header-wrapper {
@@ -60,6 +70,16 @@ header {
 /* carousel css start */
 #main-carousel {
   background-color: cornflowerblue;
-  height: calc(100vh - 70px);
+  height: 100vh;
   width: 100%;
+}
+
+#carousel, .carousel-item {
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
 }
