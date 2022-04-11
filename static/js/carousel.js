@@ -1,4 +1,5 @@
 window.isAutoSwitch = true
+window.dataId = 1
 window.onload = () => {
   // generate styles
   generateStylings()
@@ -12,7 +13,6 @@ window.onload = () => {
     
     // check if auto carousel auto slide
     if (isAutoSwitch) {
-      let dataId = 1
       let interval = setInterval(() => {
         if (dataId > document.getElementsByClassName('carousel-dots').length) {
           dataId = 1
@@ -122,7 +122,7 @@ function generatePerviousNextButtons(carouselContainer) {
     let dots =  document.getElementsByClassName('carousel-dots')
     activeCarouselPage = activeCarouselPage.length ? activeCarouselPage[0] : dots[0]
     
-    let dataId = parseInt(activeCarouselPage.id)
+    dataId = parseInt(activeCarouselPage.id)
     if (direction == 'left') {
       dataId = (dataId - 1) ? dataId - 1 : dots.length
     }
