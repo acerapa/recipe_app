@@ -1,3 +1,4 @@
+window.isAutoSwitch = true
 window.onload = () => {
   // generate styles
   generateStylings()
@@ -8,6 +9,18 @@ window.onload = () => {
     let carouselItems = document.getElementsByClassName('carousel-item')
     generateRedirectionDots(carouselContainer, carouselItems)
     generatePerviousNextButtons(carouselContainer)
+    
+    // check if auto carousel auto slide
+    if (isAutoSwitch) {
+      let dataId = 1
+      let interval = setInterval(() => {
+        if (dataId > document.getElementsByClassName('carousel-dots').length) {
+          dataId = 1
+        }
+        carouselPagesSwitcher(dataId)
+        dataId += 1
+      }, 5000)
+    }
   }
 }
 
@@ -111,7 +124,7 @@ function generatePerviousNextButtons(carouselContainer) {
     
     let dataId = parseInt(activeCarouselPage.id)
     if (direction == 'left') {
-      dataId = (dataId - 1) ? dataId - 1 : 3
+      dataId = (dataId - 1) ? dataId - 1 : dots.length
     }
     if (direction == 'right') {
       dataId = (dataId + 1) <= dots.length ? dataId + 1 : 1
