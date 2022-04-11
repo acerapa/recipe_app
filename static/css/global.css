@@ -10,6 +10,7 @@ header {
   height: 70px;
   background-color: #0000000d; /* when scroll header change color to #92beeb */
   position: fixed;
+  z-index: 5;
 }
 
 header img {
