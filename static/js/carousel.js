@@ -7,6 +7,7 @@ window.onload = () => {
   if(validateCarouselContainer(carouselContainer)) {
     let carouselItems = document.getElementsByClassName('carousel-item')
     generateRedirectionDots(carouselContainer, carouselItems)
+    generatePerviousNextButtons(carouselContainer)
   }
 }
 
@@ -31,7 +32,6 @@ function validateCarouselContainer(carouselContainer) {
 function generateRedirectionDots(carouselContainer, carouselItems) {
   // carousel event listeners
   function carouselDotEventListener(){
-    console.log(this.id)
     carouselPagesSwitcher(this.id)
   }
   
@@ -71,10 +71,57 @@ function carouselPagesSwitcher(dataId) {
   Array.from(carouselItems).find(el => el.dataset.id == dataId).style = 'display: block'
 }
 
+/**
+ * Generate carousel buttons
+ * @param {*} carouselContainer 
+ */
 function generatePerviousNextButtons(carouselContainer) {
+  let prevNextContainer = document.createElement('div')
   let leftButton = document.createElement('button')
   let rightButton = document.createElement('button')
   
+  // assign text
+  leftButton.innerHTML = '<'
+  rightButton.innerHTML = '>'
+  
+  // assign class
+  prevNextContainer.classList.add('carousel-prev-next-container')
+  leftButton.classList.add('carousel-button')
+  rightButton.classList.add('carousel-button')
+  leftButton.id = 'carousel-button-left'
+  rightButton.id = 'carousel-button-right'
+  
+  //add event listeners
+  leftButton.addEventListener('click', e => {
+    carouselButtonsClickListener('left')
+  })
+  
+  rightButton.addEventListener('click', e => {
+    carouselButtonsClickListener('right')
+  })
+  
+  /**
+   * carousel button event listener (Inner method)
+   * @param {*} direction 
+   */
+  function carouselButtonsClickListener(direction) {
+    let activeCarouselPage = document.getElementsByClassName('active-carousel-dot')
+    let dots =  document.getElementsByClassName('carousel-dots')
+    activeCarouselPage = activeCarouselPage.length ? activeCarouselPage[0] : dots[0]
+    
+    let dataId = parseInt(activeCarouselPage.id)
+    if (direction == 'left') {
+      dataId = (dataId - 1) ? dataId - 1 : 3
+    }
+    if (direction == 'right') {
+      dataId = (dataId + 1) <= dots.length ? dataId + 1 : 1
+    }
+    carouselPagesSwitcher(dataId)
+  }
+  
+  prevNextContainer.appendChild(leftButton)
+  prevNextContainer.appendChild(rightButton)
+  carouselContainer.appendChild(prevNextContainer)
 }
 
 /**
@@ -121,7 +168,33 @@ function generateStylings() {
     0%    { opacity: .1; }
     100%   { opacity: 1; }
   }
+  .carousel-prev-next-container {
+    position: absolute;
+    top: 45vh;
+    width: 100%;
+  }
+  .carousel-button {
+    background: #0000000d;
+    color: white;
+    border: none;
+    outline: none;
+    display: block;
+    width: 65px;
+    height: 80px;
+    font-size: 2em;
+    cursor: pointer;
+    opacity: 0.4;
+  }
+  .carousel-button:hover {
+    opacity: 1;
+    background-color: #00000087;
+  }
+  #carousel-button-left {
+    float: left;
+  }
+  #carousel-button-right {
+    float: right;
+  }
   `
-  
   head.appendChild(carouselDotStyles)  
 }
