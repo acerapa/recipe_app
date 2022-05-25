@@ -1,0 +1,33 @@
+{% extends 'layouts/app.html' %}
+{% load static %}
+
+{% block style %}
+  <link rel='stylesheet' href='{% static 'css/login.css' %}'>
+{% endblock style %}
+
+{% block title %}
+Login - DelishDish
+{% endblock title %}
+
+{% block header %}
+  {% include 'components/header.html' %}
+{% endblock header %}
+
+{% block content %}
+<div id='login-container'>
+  <form action='post' id='login-form'>
+    <p id='login-label'>Login to DelishDish</p>
+    <div class='input-group'>
+      {{ form.email }}
+    </div>
+    <div class='input-group'>
+      {{ form.password }}
+    </div>
+    <div class='input-group'>
+      <input type='submit' class='header-button' id='login-button' value='login'>
+    </div>
+    <hr>
+    <p><small>Forgot password?&nbsp;<a href='#'>click here</a></small></p>
+  </form>
+</div>
+{% endblock content %}

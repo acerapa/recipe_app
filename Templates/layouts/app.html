@@ -12,7 +12,7 @@
 <body>
   <div id='main'>
     <header>
-      {% include 'components/header.html' %}
+      {% block header %}{% endblock header %}
     </header>
     {% block content %}{% endblock content %}
   </div>

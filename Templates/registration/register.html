@@ -1,8 +1,17 @@
 {% extends 'layouts/app.html' %}
+{% load static %}
+
+{% block style %}
+  <link rel='stylesheet' href='{% static 'css/register.css' %}'>
+{% endblock style %}
 
 {% block title %}
-Register User
+Register - DelishDish
 {% endblock title %}
+
+{% block header %}
+  {% include 'components/header.html' %}
+{% endblock header %}
 
 {% block content %}
 {% for field, errors in form.errors.items %}
@@ -10,9 +19,26 @@ Register User
     {{ error }}
   {% endfor %}
 {% endfor %}
-<form action="" method="POST">
-  {% csrf_token %}
-  {{ form }}
-  <input type='submit' value='Submit'>
-</form>
+<div id='register-container'>
+  <form id='form-register-container' action="" method="POST">
+    <p id='register-label'>Register to DelishDish</p>
+    {% csrf_token %}
+    <div class='input-group'>
+      {{ form.first_name }}
+    </div>
+    <div class='input-group'>
+      {{ form.last_name }}
+    </div>
+    <div class='input-group'>
+      {{ form.email }}
+    </div>
+    <div class='input-group'>
+      {{ form.password1 }}
+    </div>
+    <div class='input-group'>
+      {{ form.password2 }}
+    </div>
+    <input id='register-button' class='header-button' type='submit' value='Register'>
+  </form>
+</div>
 {% endblock content %}

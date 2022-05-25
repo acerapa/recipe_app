@@ -8,7 +8,7 @@ body {
 header {
   width: 100%;
   height: 70px;
-  background-color: #0000000d; /* when scroll header change color to #92beeb */
+  background-color: #92beeb; /* when scroll header change color to #92beeb */
   position: fixed;
   z-index: 5;
 }
@@ -60,6 +60,7 @@ header img {
   background-color: transparent;
   color: white;
   cursor: pointer;
+  text-decoration: none !important;
 }
 
 .header-button:hover {
