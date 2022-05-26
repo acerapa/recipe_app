@@ -52,6 +52,18 @@ header img {
   margin-right: 10px;
 }
 
+#header-user-profile {
+  background: white;
+  width: 2em;
+  height: 2em;
+  border-radius: 1em;
+  margin: 0px 5px 0px 0px;
+}
+
+#header-user-name {
+  color: white;
+}
+
 .header-button {
   margin: 0px 5px;
   border: solid 1px white;
