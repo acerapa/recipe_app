@@ -5,6 +5,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import ModifiedUserCreationForm, ModifiedUserLoginForm
 
+import json
+
 def registerUser(request):
     form = ModifiedUserCreationForm(request.POST or None)
     context = {
@@ -15,7 +17,8 @@ def registerUser(request):
             form.save()
             return HttpResponse('User Saved!')
         else:
-            return render(request, 'registration/register.html', {"form": form})
+            error_messages = json.loads(form.errors.as_json())
+            return render(request, 'registration/register.html', {"form": form, "error_messages": error_messages})
     return render(request, 'registration/register.html', context)
 
 def login(request):
