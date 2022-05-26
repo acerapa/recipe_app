@@ -15,13 +15,20 @@ Login - DelishDish
 
 {% block content %}
 <div id='login-container'>
-  <form action='post' id='login-form'>
+  <form action='{% url 'login' %}' method='POST' id='login-form'>
     <p id='login-label'>Login to DelishDish</p>
+    {% csrf_token %}
     <div class='input-group'>
-      {{ form.email }}
+      {{ form.username }}
+      {% if form.errors.username %}
+        <small class='error-message'>*{{ error_messages.username.0.message }}</small>
+      {% endif %}
     </div>
     <div class='input-group'>
       {{ form.password }}
+      {% if form.errors.password %}
+        <small class='error-message'>*{{ error_messages.password.0.message }}</small>
+      {% endif %}
     </div>
     <div class='input-group'>
       <input type='submit' class='header-button' id='login-button' value='login'>

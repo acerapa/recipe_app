@@ -4,8 +4,13 @@
     <img src='{% static 'img/food-no-bg.png' %}'>
     <p id='header-text'>DelishDish</p>
   </div>
+  
   <div id='header-button-wrapper'>
-    <a class='header-button' href='{% url 'login' %}' style='display: {% if request.resolver_match.url_name == 'login' %} none {% endif %}'>login</a>
-    <a class='header-button' href='{% url 'register' %}' style='display: {% if request.resolver_match.url_name == 'register' %} none {% endif %}'>sign-up</a>
+    {% if request.user.is_authenticated %}
+      <div class='header-user-profile'></div><small>{{ request.user.first_name}} {{request.user.last_name }}</small>    
+    {% else %}
+      <a class='header-button' href='{% url 'login' %}' style='display: {% if request.resolver_match.url_name == 'login' %} none {% endif %}'>login</a>
+      <a class='header-button' href='{% url 'register' %}' style='display: {% if request.resolver_match.url_name == 'register' %} none {% endif %}'>sign-up</a>
+    {% endif %}
   </div>
 </div>

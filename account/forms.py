@@ -1,8 +1,8 @@
 from tkinter import Widget
+from typing import Optional
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import AuthenticationForm
 
 # Get user model
 User = get_user_model()
@@ -26,8 +26,8 @@ class ModifiedUserCreationForm(UserCreationForm):
     return user
 
 class ModifiedUserLoginForm(AuthenticationForm):
-  email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'class': 'input-field','placeholder': 'Email'}))
+  username = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'class': 'input-field','placeholder': 'Email'}))
   password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'input-field', 'placeholder': 'Password'}))
   
   class Meta:
-    fields = ('email', 'password')
+    fields = ('username', 'password')

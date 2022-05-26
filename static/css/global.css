@@ -86,3 +86,14 @@ header img {
   width: 100%;
   height: 100%;
 }
+
+/* form css  start*/
+.error-message {
+  color: rgb(237, 41, 41);
+  font-size: 0.75em;
+}
+
+.input-group {
+  padding: 10px 0px;
+}
+/* form css end */
