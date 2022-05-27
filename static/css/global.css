@@ -120,7 +120,7 @@ header img {
   width: 128px;
   font-size: 1em;
   text-align: justify;
-  animation: fadeIn 1 1.5s;
+  animation: fadeIn 1 0.5s;
   display: none;
 }
 
@@ -136,6 +136,7 @@ header img {
   background-color: #bddaf7;
   color: white;
 }
+
 @keyframes fadeIn {
   0% {
     opacity: 0;

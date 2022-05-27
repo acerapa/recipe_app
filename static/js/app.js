@@ -13,6 +13,16 @@ window.onload = () => {
       let headerDropDown  = document.getElementById('header-dropdown')
       headerContainer.style = 'display: block'
       headerDropDown.style = 'display: block'
+      
+      headerContainer.addEventListener('click', () => {
+        headerContainer.style.display = 'none'
+        headerDropDown.style.animation = null
+        headerDropDown.style = 'display: block; animation: fadeOut 1 1s'
+        headerDropDown.onanimationend = () => {
+          headerDropDown.style.display = 'none'
+          headerDropDown.onanimationend = null
+        }
+      })
     })
   }
 }
