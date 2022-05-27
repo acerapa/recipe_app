@@ -14,10 +14,13 @@ window.onload = () => {
       headerContainer.style = 'display: block'
       headerDropDown.style = 'display: block'
       
+      // assign trigger events
       headerContainer.addEventListener('click', () => {
         headerContainer.style.display = 'none'
         headerDropDown.style.animation = null
         headerDropDown.style = 'display: block; animation: fadeOut 1 1s'
+        
+        // trigger fadeout animation
         headerDropDown.onanimationend = () => {
           headerDropDown.style.display = 'none'
           headerDropDown.onanimationend = null
