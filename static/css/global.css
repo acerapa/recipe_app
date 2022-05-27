@@ -4,6 +4,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
 /* header css start */
 header {
   width: 100%;
@@ -62,6 +66,7 @@ header img {
 
 #header-user-name {
   color: white;
+  cursor: pointer;
 }
 
 .header-button {
@@ -73,6 +78,7 @@ header img {
   color: white;
   cursor: pointer;
   text-decoration: none !important;
+  font-size: 0.8em;
 }
 
 .header-button:hover {
@@ -98,6 +104,56 @@ header img {
   width: 100%;
   height: 100%;
 }
+
+/* header dropdown start */
+#header-dropdown-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+}
+
+#header-dropdown {
+  position: fixed;
+  top: 57px;
+  background: white;
+  width: 128px;
+  font-size: 1em;
+  text-align: justify;
+  animation: fadeIn 1 1.5s;
+  display: none;
+}
+
+.dropdown-item {
+  padding: 10px 35px;
+  margin: 0px 0px;
+  font-size: small;
+  color: #21405e;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #bddaf7;
+  color: white;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+/* header dropdown end */
 
 /* form css  start*/
 .error-message {

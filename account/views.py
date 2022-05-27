@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, logout, login as auth_login
 
 # Create your views here.
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 
 from .forms import ModifiedUserCreationForm, ModifiedUserLoginForm
 
@@ -41,3 +42,8 @@ def login(request):
     'form': form
   }
   return render(request, 'pages/auth/login.html', context)
+
+@login_required
+def account_logout(request):
+    logout(request)
+    return redirect('welcome')
