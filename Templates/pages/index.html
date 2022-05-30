@@ -10,6 +10,10 @@ Welcome to DelishDish
   {% include 'components/header.html' %}
 {% endblock header %}
 
+{% block style %}
+  <link rel='stylesheet' href='{% static 'css/index.css' %}'>
+{% endblock style %}
+
 {% block content %}
 <div class='wrapper'>
   <div class='carousel-container' id='main-carousel'>
@@ -30,6 +34,9 @@ Welcome to DelishDish
         <img src='{% static 'img/carousel-02.jpg' %}'>
       </div>
     </div>
+  </div>
+  <div id='welcome-search-bar'>
+    <input type='text' placeholder='Search recipe'>
   </div>
 </div>
 {% endblock content %}

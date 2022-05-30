@@ -111,30 +111,31 @@ class Carousel
     
     //add event listeners
     leftButton.addEventListener('click', e => {
-      carouselButtonsClickListener('left')
+      this.options.dataId = carouselButtonsClickListener('left', this.carouselPagesSwitcher)
     })
     
     rightButton.addEventListener('click', e => {
-      carouselButtonsClickListener('right')
+      this.options.dataId = carouselButtonsClickListener('right', this.carouselPagesSwitcher)
     })
     
     /**
      * carousel button event listener (Inner method)
      * @param {*} direction 
      */
-    function carouselButtonsClickListener(direction) {
+    function carouselButtonsClickListener(direction, carouselPagesSwitcher) {
       let activeCarouselPage = document.getElementsByClassName('active-carousel-dot')
       let dots =  document.getElementsByClassName('carousel-dots')
       activeCarouselPage = activeCarouselPage.length ? activeCarouselPage[0] : dots[0]
       
-      dataId = parseInt(activeCarouselPage.id)
+      let id = parseInt(activeCarouselPage.id)
       if (direction == 'left') {
-        dataId = (dataId - 1) ? dataId - 1 : dots.length
+        id = (id - 1) ? id - 1 : dots.length
       }
       if (direction == 'right') {
-        dataId = (dataId + 1) <= dots.length ? dataId + 1 : 1
+        id = (id + 1) <= dots.length ? id + 1 : 1
       }
-      this.carouselPagesSwitcher(dataId)
+      carouselPagesSwitcher(id)
+      return id
     }
     
     prevNextContainer.appendChild(leftButton)
